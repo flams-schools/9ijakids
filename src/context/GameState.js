@@ -3,7 +3,7 @@ import GameContext from './gameContext'
 import gameReducer from './gameReducer'
 
 const GameState = (props) => {
-  const initialState = { games: [] }
+  const initialState = { games: [], search: [] }
   const [state, dispatch] = useReducer(gameReducer, initialState)
 
   const getGames = async () => {
@@ -20,8 +20,21 @@ const GameState = (props) => {
     }
   }
 
+  const searchGame = (data) => {
+    const {games} = state
+    const result = games.filter(item => item.Topic.includes(data) || item.Subject.includes(data) || item.Level.includes(data)  )
+    dispatch({ 
+      type: "SEARCH_RESULT",
+      payload: result
+    })
+  }
+
+  const clear = () => {
+    dispatch({ type: "STATE_CLEAR"})
+  }
+
   return (
-    <GameContext.Provider value={{ games: state.games, getGames }}>
+    <GameContext.Provider value={{ games: state.games, search: state.search, getGames, searchGame, clear }}>
       {props.children}
     </GameContext.Provider>
   )

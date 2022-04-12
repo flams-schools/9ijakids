@@ -11,7 +11,7 @@ const Intro = () => {
           <h2 className='l2'>Learn New Skills Online</h2>
           <h2 className='l2'>Find Best Courses</h2>
           <div className='btn-intro'>
-            <AuthButton name='Register' styles='register' />
+            <AuthButton name='Register' styles='register_color register' />
             <AuthButton name='Login' styles='login' />
           </div>
         </div>

@@ -1,8 +1,34 @@
 import React from 'react'
 import AuthButton from '../AuthButton'
 import './navbar.css'
+import GamesContext from '../../context/gameContext'
 
 const Navbar = () => {
+  const gameContext = React.useContext(GamesContext)
+  const { searchGame, clear } = gameContext
+  const [search, setSearch] = React.useState("")
+  const [openSearch, setOpenSearch] = React.useState(false)
+
+  React.useEffect(() => {
+    if (search.length == 0) {
+      clear()
+    }
+    // eslint-disable-next-line
+  }, [search])
+
+
+
+  const onChangeHandler = (e) => {
+    // e.preventDefault();
+    setSearch(e.target.value)
+    if (search.length > 0) {
+      searchGame(search);
+      return;
+    }
+  }
+
+  
+
   return (
     <div className='nav-container'>
       <div className='navbarLeft'>
@@ -19,11 +45,14 @@ const Navbar = () => {
           <li className='nav-li'>About</li>
           <li className='nav-li'>Games</li>
           <li className='nav-li'>Competition</li>
-          <li className='nav-li-register'>
-            <AuthButton name='Register' styles='register-1' />
+          <li className='nav-li'>
+            <AuthButton name='Register' styles='register_color register_auth_nav' />
           </li>
-          <li className='iconBorder'>
-            <i className='fas fa-search navbarIcon' />
+          <li className=' nav-li iconBorder'>
+            <i className='fas fa-search navbarIcon' onClick={() => {setOpenSearch(!openSearch)}}  />
+            <div className={` ${openSearch ? "search__box" : "search_hide"}`}>
+              <input type="text" name='search' value={search} onChange={onChangeHandler} className="" />
+            </div>
           </li>
         </ul>
       </div>

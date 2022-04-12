@@ -12,9 +12,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  /* width: 50px;
+  height: 50px; */
 }
+
+.navbarRight {
+  align-items: center;
+}
+
 .naijakid {
   font-size: 20px;
   font-weight: bold;
@@ -43,6 +48,10 @@
   cursor: pointer;
 }
 
+.register_color {
+  background-color: #ffcc00;
+}
+
 .register-1 {
   padding-top: 10px;
   width: 150px;
@@ -56,6 +65,7 @@
 .navbarIcon {
   font-size: 20px;
   cursor: pointer;
+  position: relative;
 }
 .iconBorder {
   width: 10%;
@@ -63,4 +73,32 @@
   margin: 15px;
   padding: 10px;
   background-color: white;
+}
+
+
+.register_auth_nav {
+  border: none;
+  cursor: pointer;
+
+}
+
+.search_hide {
+  display: none;
+}
+
+.search__box {
+  display: flex;
+  /* padding: 10px 15px; */
+  position: absolute;
+  top: 0;
+  /* width: 100%; */
+  background: red;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding: 10px 5px;
+  font-size: 18px;
+  outline: none
 }
